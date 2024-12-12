@@ -10,7 +10,7 @@ class NewsTile extends StatelessWidget {
         ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: Image.network(
-              'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.fromyouflowers.com%2Fdeliver%2Fsame-day&psig=AOvVaw3SaQX5at78n_68_aMSmURW&ust=1734047949538000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIjEipP2oIoDFQAAAAAdAAAAABAE',
+              'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
