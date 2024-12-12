@@ -9,7 +9,8 @@ class NewsListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 22),
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemCount: 10,
         itemBuilder: (context, index) {
           return NewsTile();
