@@ -18,7 +18,7 @@ class NewsService {
   //   print(response.data.toString());
   // }
 
-  getNews() async {
+  Future<List<ArticleModel>> getNews() async {
     Response response = await dio.get(
       'https://newsapi.org/v2/top-headlines?country=us&apiKey=0a7c60f467c547f4ac902e852fa206d3&category=general',
     );
@@ -37,6 +37,6 @@ class NewsService {
       );
       articleList.add(articleModel);
     }
-    print(articleList);
+    return articleList;
   }
 }
