@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/article_model.dart';
 
 class NewsTile extends StatelessWidget {
-  const NewsTile({super.key});
+  const NewsTile({super.key, required this.articleModel});
+  final ArticleModel articleModel;
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,10 @@ class NewsTile extends StatelessWidget {
         ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: Image.network(
-              'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
+              // 'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
+              articleModel.image ??
+                  'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
+
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -19,7 +24,7 @@ class NewsTile extends StatelessWidget {
           height: 12,
         ),
         Text(
-          'titletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitle',
+          articleModel.title,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
@@ -32,7 +37,7 @@ class NewsTile extends StatelessWidget {
           height: 8,
         ),
         Text(
-          'subTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitlesubTitle',
+          articleModel.subTitle ?? '',
           maxLines: 2,
           style: const TextStyle(
             color: Colors.grey,
