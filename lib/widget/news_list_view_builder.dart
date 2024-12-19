@@ -2,10 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
 import 'package:news_app/services/news_service.dart';
+import 'package:news_app/widget/error_message.dart';
 import 'package:news_app/widget/news_list_view.dart';
 
-class NewsListViewBuilder extends StatelessWidget {
-  // List<ArticleModel> articles = [];
+class NewsListViewBuilder extends StatefulWidget {
+  @override
+  State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
+}
+
+class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
+// List<ArticleModel> articles = [];
   // bool isLoading = true;
 
   // @override
@@ -20,12 +26,29 @@ class NewsListViewBuilder extends StatelessWidget {
   //   setState(() {});
   // }
 
+  var future;
+  @override
+  void initState() {
+    future = NewsService(dio: Dio()).getNews();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: NewsService(dio: Dio()).getNews(),
+    return FutureBuilder<List<ArticleModel>>(
+        future: future,
         builder: (context, snapshot) {
-          return NewsListView(articles: snapshot.data ?? []);
+          if (snapshot.hasData) {
+            return NewsListView(articles: snapshot.data!);
+          } else if (snapshot.hasError) {
+            return ErrorMessage(message: "oops There was an Error, try later!");
+          } else {
+            return SliverToBoxAdapter(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
         });
 
     // return isLoading
