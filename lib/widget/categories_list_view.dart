@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
+import 'package:news_app/views/category_view.dart';
 import 'package:news_app/widget/category_card.dart';
 
 class CategoriesListView extends StatelessWidget {
@@ -45,6 +46,9 @@ class CategoriesListView extends StatelessWidget {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           return CategoryCard(
+            onTap: () {
+              Navigator.pushNamed(context, CategoryView.categoryView);
+            },
             categoryModel: CategoryModel(
               image: categories[index].image,
               categoryName: categories[index].categoryName,
