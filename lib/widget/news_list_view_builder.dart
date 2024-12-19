@@ -35,6 +35,12 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
               child: CircularProgressIndicator(),
             ),
           )
-        : NewsListView(articles: articles);
+        : articles.isNotEmpty
+            ? NewsListView(articles: articles)
+            : SliverToBoxAdapter(
+                child: Center(
+                  child: Text("oops There was an Error, try later!"),
+                ),
+              );
   }
 }
