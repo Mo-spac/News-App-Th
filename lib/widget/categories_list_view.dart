@@ -9,31 +9,31 @@ class CategoriesListView extends StatelessWidget {
   final List<CategoryModel> categories = const [
     CategoryModel(
       image: 'assets/images/business.avif',
-      categoryName: 'Business',
+      categoryName: 'business',
     ),
     CategoryModel(
       image: 'assets/images/entertaiment.avif',
-      categoryName: 'Entertainment',
+      categoryName: 'entertainment',
     ),
     CategoryModel(
       image: 'assets/images/health.avif',
-      categoryName: 'Health',
+      categoryName: 'health',
     ),
     CategoryModel(
       image: 'assets/images/science.avif',
-      categoryName: 'Science',
+      categoryName: 'science',
     ),
     CategoryModel(
       image: 'assets/images/technology.jpeg',
-      categoryName: 'Technology',
+      categoryName: 'technology',
     ),
     CategoryModel(
       image: 'assets/images/sports.avif',
-      categoryName: 'Sports',
+      categoryName: 'sports',
     ),
     CategoryModel(
       image: 'assets/images/general.avif',
-      categoryName: 'General',
+      categoryName: 'general',
     ),
   ];
 
@@ -46,9 +46,6 @@ class CategoriesListView extends StatelessWidget {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           return CategoryCard(
-            onTap: () {
-              Navigator.pushNamed(context, CategoryView.categoryView);
-            },
             categoryModel: CategoryModel(
               image: categories[index].image,
               categoryName: categories[index].categoryName,

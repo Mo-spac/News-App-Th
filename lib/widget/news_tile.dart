@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class NewsTile extends StatelessWidget {
   const NewsTile({super.key, required this.articleModel});
@@ -10,16 +11,22 @@ class NewsTile extends StatelessWidget {
     return Column(
       children: [
         ClipRRect(
-            borderRadius: BorderRadius.circular(6),
-            child: Image.network(
-              // 'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
-              articleModel.image ??
-                  'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
-
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            )),
+          borderRadius: BorderRadius.circular(6),
+          // child: CachedNetworkImage(
+          //   imageUrl: articleModel.image ??
+          //       'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
+          //   // height: 200,
+          //   // width: double.infinity,
+          //   // fit: BoxFit.cover,
+          //   placeholder: (context, url) => CircularProgressIndicator(),
+          //   errorWidget: (context, url, error) => Icon(Icons.error),
+          // ),
+          child: Image.network(
+            // 'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
+            articleModel.image ??
+                'https://i0.wp.com/www.southsideblooms.com/wp-content/uploads/2021/12/pexels-lisa-2106037-scaled.jpg?w=1708&ssl=1',
+          ),
+        ),
         const SizedBox(
           height: 12,
         ),

@@ -6,6 +6,9 @@ import 'package:news_app/widget/error_message.dart';
 import 'package:news_app/widget/news_list_view.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
+  final String category;
+
+  const NewsListViewBuilder({super.key, required this.category});
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
@@ -29,7 +32,7 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   var future;
   @override
   void initState() {
-    future = NewsService(dio: Dio()).getTopHeadlines(category: 'general');
+    future = NewsService(dio: Dio()).getTopHeadlines(category: widget.category);
     super.initState();
   }
 
